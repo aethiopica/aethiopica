@@ -10,11 +10,10 @@
     defaults: {
       _id: undefined,
       pivot: '',
-	  id: '',
-	  lat: '',
-	  lng: '',
-	  address: '',
-	  name: '',
+      id: '',
+      lat: '',
+      lng: '',
+      address: '',
       name: ''
     },
     url: function() {
@@ -38,11 +37,10 @@
   app.Filter = Backbone.Model.extend({
     defaults: {
       pivot: '',
-	  id: '',
-	  lat: '',
-	  lng: '',
-	  address: '',
-	  name: '',
+      id: '',
+      lat: '',
+      lng: '',
+      address: '',
       name: '',
       sort: '',
       limit: ''
@@ -90,21 +88,20 @@
       else {
         this.model.save({
           name: this.$el.find('[name="name"]').val(),
-		address: this.$el.find('[name="address"]').val(),
-		lng: this.$el.find('[name="lng"]').val(),
-		lat: this.$el.find('[name="lat"]').val(),
-		id: this.$el.find('[name="id"]').val(),
-		pivot: this.$el.find('[name="pivot"]').val(),
-          name: this.$el.find('[name="name"]').val()
+          address: this.$el.find('[name="address"]').val(),
+          lng: this.$el.find('[name="lng"]').val(),
+          lat: this.$el.find('[name="lat"]').val(),
+          id: this.$el.find('[name="id"]').val(),
+          pivot: this.$el.find('[name="pivot"]').val()
         },{
           success: function(model, response) {
             if (response.success) {
               app.headerView.model.set({ pivot: '',
-	  id: '',
-	  lat: '',
-	  lng: '',
-	  address: '',
-	  name: '', name: '' });
+                                         id: '',
+                                         lat: '',
+                                         lng: '',
+                                         address: '',
+                                         name: ''});
               Backbone.history.stop();
               Backbone.history.start();
             }

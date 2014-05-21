@@ -63,31 +63,35 @@ module.exports = function(grunt) {
     },
     watch: {
       clientJS: {
-         files: [
+        files: [
           'public/layouts/**/*.js', '!public/layouts/**/*.min.js',
           'public/views/**/*.js', '!public/views/**/*.min.js'
-         ],
-         tasks: ['newer:uglify', 'newer:jshint:client']
+        ],
+        tasks: ['newer:uglify', 'newer:jshint:client']
       },
       serverJS: {
-         files: ['views/**/*.js'],
-         tasks: ['newer:jshint:server']
+        files: ['views/**/*.js'],
+        tasks: ['newer:jshint:server']
       },
       clientLess: {
-         files: [
+        files: [
           'public/layouts/**/*.less',
           'public/views/**/*.less',
           'public/less/**/*.less'
-         ],
-         tasks: ['newer:less']
+        ],
+        tasks: ['newer:less']
       }
     },
     uglify: {
       options: {
-        sourceMap: true,
-        sourceMapName: function(filePath) {
-          return filePath + '.map';
-        }
+        mangle: false,
+        beautify: true,
+        compress: false,
+        preserveComments: true
+        // sourceMap: true,
+        // sourceMapName: function(filePath) {
+        //     return filePath + '.map';
+        // }
       },
       layouts: {
         files: {
@@ -108,16 +112,16 @@ module.exports = function(grunt) {
             'public/vendor/bootstrap/js/tab.js',
             'public/vendor/bootstrap/js/transition.js',
             'public/vendor/momentjs/moment.js',
-            'public/layouts/core.js'
+            'public/layouts/core.js',
+            'public/views/places/jquery.geocomplete.js'
           ],
           'public/layouts/ie-sucks.min.js': [
             'public/vendor/html5shiv/html5shiv.js',
             'public/vendor/respond/respond.js',
             'public/layouts/ie-sucks.js'
           ],
-          
-		  'public/layouts/crud.min.js': ['public/layouts/crud.js'],
-			'public/layouts/admin.min.js': ['public/layouts/admin.js']
+          'public/layouts/crud.min.js': ['public/layouts/crud.js'],
+          'public/layouts/admin.min.js': ['public/layouts/admin.js']
         }
       },
       views: {
@@ -136,7 +140,8 @@ module.exports = function(grunt) {
           jshintrc: '.jshintrc-client',
           ignores: [
             'public/layouts/**/*.min.js',
-            'public/views/**/*.min.js'
+            'public/views/**/*.min.js',
+            'public/views/places/jquery.geocomplete.js'
           ]
         },
         src: [
@@ -165,9 +170,8 @@ module.exports = function(grunt) {
             'public/less/font-awesome-build.less',
             'public/layouts/core.less'
           ],
-          
-		  'public/layouts/crud.min.css': ['public/layouts/crud.less'],
-			'public/layouts/admin.min.css': ['public/layouts/admin.less']
+          'public/layouts/crud.min.css': ['public/layouts/crud.less'],
+          'public/layouts/admin.min.css': ['public/layouts/admin.less']
         }
       },
       views: {

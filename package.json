@@ -27,7 +27,7 @@
     "body-parser": "^1.2.0",
     "compression": "^1.0.2",
     "cookie-parser": "^1.1.0",
-    "express-session": "^1.1.0",
+    "express-session": "^1.2.0",
     "grunt": "~0.4.1",
     "grunt-concurrent": "~0.4.1",
     "grunt-contrib-clean": "~0.5.0",

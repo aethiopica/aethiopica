@@ -1,37 +1,24 @@
 extends ../layouts/default
 
 block head
-  title Drywall is Running
+  title Collect places you enjoy
 
 block neck
   link(rel='stylesheet', href='/views/index.min.css?#{cacheBreaker}')
 
 block body
   div.jumbotron
-    h1 Success
-    p.lead
-      | Your Node.js website and user system is running. May the force be with you.
-      div
-        a.btn.btn-primary.btn-lg(href='/signup/') Create an Account
-        |  or&nbsp;
-        a.btn.btn-warning.btn-lg(href='/login/forgot/') Reset Your Password
-      div.clearfix
-  div.row
-    div.col-sm-4
-      div.panel.panel-default
-        div.panel-body
-          h3 About Us
-          p At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.
-          a.btn.btn-default.btn-block(href='/about/') Learn More
-    div.col-sm-4
-      div.panel.panel-default
-        div.panel-body
-          h3 Sign Up
-          p At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.
-          a.btn.btn-default.btn-block(href='/signup/') Learn More
-    div.col-sm-4
-      div.panel.panel-default
-        div.panel-body
-          h3 Contact Us
-          p At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.
-          a.btn.btn-default.btn-block(href='/contact/') Learn More
+    br
+    br
+    br
+    br
+    if !user || !user.username
+      p.lead
+        | Aethiopica is a simple app for collecting places you enjoy
+        div
+          a.btn.btn-warning.btn-lg(href='/login/') Sign In
+          |  or&nbsp;
+          a.btn.btn-primary.btn-lg(href='/signup/') Create an Account
+        div.clearfix
+    else
+      a.btn.btn-primary.btn-lg(href='/places/') Check out your places

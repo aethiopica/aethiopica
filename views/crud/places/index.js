@@ -95,11 +95,11 @@ exports.create = function(req, res, next){
     var fieldsToSet = {
       _id: req.app.utility.slugify(req.body.pivot +' '+ req.body.name),
       pivot: req.body.pivot,
-      name: req.body.name
-      ,id: req.body.id
-      ,lat: req.body.lat
-      ,lng: req.body.lng
-      ,address: req.body.address
+      name: req.body.name,
+      id: req.body.id,
+      lat: req.body.lat,
+      lng: req.body.lng,
+      address: req.body.address
     };
 
     req.app.db.models.Place.create(fieldsToSet, function(err, place) {
@@ -140,11 +140,11 @@ exports.update = function(req, res, next){
   workflow.on('patchPlace', function() {
     var fieldsToSet = {
       pivot: req.body.pivot,
-      name: req.body.name
-      ,id: req.body.id
-      ,lat: req.body.lat
-      ,lng: req.body.lng
-      ,address: req.body.address
+      name: req.body.name,
+      id: req.body.id,
+      lat: req.body.lat,
+      lng: req.body.lng,
+      address: req.body.address
     };
 
     req.app.db.models.Place.findByIdAndUpdate(req.params.id, fieldsToSet, function(err, place) {

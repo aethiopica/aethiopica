@@ -4,10 +4,11 @@ exports = module.exports = function(app, mongoose) {
   var placeSchema = new mongoose.Schema({
     _id: { type: String },
     pivot: { type: String, default: '' },
-    name: { type: String, default: '' }
-	,lat: { type: String, default: '' }
-	,lng: { type: String, default: '' }
-	,address: { type: String, default: '' }
+    name: { type: String, default: '' },
+    lat: { type: String, default: '' },
+    lng: { type: String, default: '' },
+    address: { type: String, default: '' },
+    user: { type: String, default: '' }
   });
   placeSchema.plugin(require('./plugins/pagedFind'));
   placeSchema.index({ pivot: 1 });

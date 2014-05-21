@@ -8,6 +8,7 @@ html
     link(rel='stylesheet', href='/layouts/admin.min.css?#{cacheBreaker}')
     block neck
   body
+    block page
     div.navbar.navbar-inverse.navbar-fixed-top
       div.container
         div.navbar-header
@@ -68,6 +69,7 @@ html
 
     //if lte IE 9
       script(src='/layouts/ie-sucks.min.js?#{cacheBreaker}')
+    script(src='http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false')
     script(src='/layouts/core.min.js?#{cacheBreaker}')
     script(src='/layouts/admin.min.js?#{cacheBreaker}')
 

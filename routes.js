@@ -178,6 +178,14 @@ exports = module.exports = function(app, passport) {
   app.put('/crud/places/:id/', require('./views/crud/places/index').update);
   app.delete('/crud/places/:id/', require('./views/crud/places/index').delete);
 
+  // places app
+  app.all('/places*', ensureAuthenticated);
+  app.get('/places/', require('./views/places/index').find);
+  app.post('/places/', require('./views/places/index').create);
+  app.get('/places/:id/', require('./views/places/index').read);
+  app.put('/places/:id/', require('./views/places/index').update);
+  app.delete('/places/:id/', require('./views/places/index').delete);
+
   //route not found
   app.all('*', require('./views/http/index').http404);
 };

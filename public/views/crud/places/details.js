@@ -31,11 +31,10 @@
       errors: [],
       errfor: {},
       pivot: '',
-	  id: '',
-	  lat: '',
-	  lng: '',
-	  address: '',
-	  name: '',
+      id: '',
+      lat: '',
+      lng: '',
+      address: '',
       name: ''
     },
     url: function() {
@@ -81,12 +80,11 @@
       this.model.set({
         _id: app.mainView.model.id,
         name: app.mainView.model.get('name'),
-		address: app.mainView.model.get('address'),
-		lng: app.mainView.model.get('lng'),
-		lat: app.mainView.model.get('lat'),
-		id: app.mainView.model.get('id'),
-		pivot: app.mainView.model.get('pivot'),
-        name: app.mainView.model.get('name')
+        address: app.mainView.model.get('address'),
+        lng: app.mainView.model.get('lng'),
+        lat: app.mainView.model.get('lat'),
+        id: app.mainView.model.get('id'),
+        pivot: app.mainView.model.get('pivot')
       });
     },
     render: function() {
@@ -101,12 +99,11 @@
     update: function() {
       this.model.save({
         name: this.$el.find('[name="name"]').val(),
-		address: this.$el.find('[name="address"]').val(),
-		lng: this.$el.find('[name="lng"]').val(),
-		lat: this.$el.find('[name="lat"]').val(),
-		id: this.$el.find('[name="id"]').val(),
-		pivot: this.$el.find('[name="pivot"]').val(),
-        name: this.$el.find('[name="name"]').val()
+        address: this.$el.find('[name="address"]').val(),
+        lng: this.$el.find('[name="lng"]').val(),
+        lat: this.$el.find('[name="lat"]').val(),
+        id: this.$el.find('[name="id"]').val(),
+        pivot: this.$el.find('[name="pivot"]').val()
       });
     }
   });

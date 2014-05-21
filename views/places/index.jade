@@ -1,0 +1,70 @@
+extends ../../layouts/admin
+
+block head
+  title Manage Places
+
+block neck
+  link(rel='stylesheet', href='/views/places/index.min.css?#{cacheBreaker}')
+
+block feet
+  script(src='/views/places/index.min.js?#{cacheBreaker}')
+
+block page  
+  div.map-container
+    div#map(style="width: 100%; height: 100%;")
+  div.map-list
+    div#header
+    div#results-container
+    div#results-paging
+
+block body
+  script(type='text/template', id='tmpl-header')
+    div
+      h1 Places
+      span.navlinks
+        a(href='/') Home 
+        span &nbsp;
+        a(href='/logout/') Sign Out
+      div.alerts
+        |<% _.each(errors, function(err) { %>
+        div.alert.alert-danger.alert-dismissable
+          button.close(type='button', data-dismiss='alert') &times;
+          |<%- err %>
+        |<% }); %>
+        |<% if (success) { %>
+        div.alert.alert-info.alert-dismissable
+          button.close(type='button', data-dismiss='alert') &times;
+          | Changes have been saved.
+        |<% } %>
+      form.add-place
+        input(name='pivot', type='hidden', value='place')
+        input(name='lat', type='hidden', value='')
+        input(name='lng', type='hidden', value='')
+        input.form-control(name='my-name', type='text', placeholder='name', value!='<%- name %>')
+        input.form-control(name='address', type='text', placeholder='address', value!='<%- address %>')
+        button.btn.btn-primary.btn-add(type='button') Add New
+
+  script(type='text/template', id='tmpl-results-items')
+    ul#results-items
+
+  script(type='text/template', id='tmpl-results-item')
+    span.title <%- name %> 
+    button.btn.btn-default.btn-xs.btn-details(type='button')
+      i(class='fa fa-pencil')  Edit
+    br
+    span.subtitle <%- address %>
+    // img(src!="http://maps.googleapis.com/maps/api/streetview?size=50x50&location=<%- lat %>,<%- lng %>")
+
+  script(type='text/template', id='tmpl-results-empty-item')
+
+  script(type='text/template', id='tmpl-results-paging')
+    div.well
+      div.btn-group.pull-left
+        button.btn.btn-default(disabled=true) Page <%= pages.current %> of <%= pages.total %>
+        button.btn.btn-default(disabled=true) Rows <%= items.begin %> - <%= items.end %> of <%= items.total %>
+      div.btn-group.pull-right
+        button.btn.btn-default.btn-page.btn-prev(data-page!='<%= pages.prev %>') Prev
+        button.btn.btn-default.btn-page.btn-next(data-page!='<%= pages.next %>')  Next
+      div.clearfix
+
+  script(type='text/template', id='data-results') !{data.results}
